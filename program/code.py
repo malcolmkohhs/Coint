@@ -37,3 +37,28 @@ while True:
     else:
         print("Re-", end="")
 
+while True:
+    print("The cost of the product you are buying. Enter the following number to enter the kind of value for the item.")
+    print("1: Dollars ($)\n2: Cents (¢)\n3: No cost to enter.")
+    option_cost=input()
+    item_cost=0
+    if option_cost.isdigit()==False or int(option_cost)<1 or int(option_cost)>3:
+        print("Invalid format/ number, please re-enter. Thank you!")
+    break
+while True:
+    if int(option_cost)==3:
+        break
+    sign="Dollars ($)"
+    if int(option_cost)==2:
+        sign="Cents (¢)"
+    item_cost=input("Enter the cost of your item in {}:".format(sign))
+    alpha,decimal=0,0
+    for i in str(item_cost):
+        if i.isalpha()==True:
+            alpha+=1
+        if i==".":
+            decimal+=1
+    if alpha>0 or decimal>1:
+        print("The entered cost is incorrect. Please Re-",end="")
+    else:
+        break
