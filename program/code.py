@@ -23,3 +23,5 @@ for i in coins:
     # show
     cv2.imshow(i, trial)
     cv2.waitKey(0)
+
+print("hello world")
