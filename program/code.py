@@ -91,5 +91,15 @@ while True:
             print("You have just enough money to pay the item. You will not receive any change.")
         else:
             print("You have more than enough moeny to pay for the item. You would receive a change of {}({}).".format(change,sign[::-1][1]))
-    
+    print("\n---------------\nWould you like to input another image?\nEnter the following number for your answer\n1: Yes\n2: No")
+    while True:
+        xxx=str(input())
+        if xxx!="1" or xxx!="2":
+            print("Invalid input, please enter a valid input. Refer to as above^. Thank you.")
+        else:
+            break
+    if xxx=="2":
+        print("You have exited the program. Thank you and goodbye! :)")
+        break
+    break
     
