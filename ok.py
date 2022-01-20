@@ -1,3 +1,3 @@
 fout = open("test.txt","w")
-fout.write("hellworld")
+fout.write("helloworld")
 fout.close()
