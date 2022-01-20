@@ -14,7 +14,7 @@ def main(image_name): #main algo to determine the coin in img
     while True:
         img_org = cv2.imread(image_name,1)
         img_org_1 = cv2.resize(img_org,(433,577))
-        img_changed_2 = cv2.imread(coins[i],1)
+        img_changed_2 = cv2.imread(coins[i],0)
         s = ssim(img_org_1, img_changed_2,  multichannel=True)
         if s > 0.9:
             return coins[i],s
