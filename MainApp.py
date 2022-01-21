@@ -1,41 +1,43 @@
+import os
+import tkinter.font
 from tkinter import *
 from tkinter import ttk
-import os
 from time import sleep
 #import libraries
-
-
-def selfdestruct():
-    loadingscreen.destroy()
-
-loadingscreen = Tk()
-loadingscreen.title("Coint")
-loadingscreen.geometry("600x400")
-loadingscreen.geometry("+350+250")
-
-welcome = Label(loadingscreen, text="WELCOME TO COINT")
-loadingscreen.after(500,selfdestruct)
-loadingscreen.mainloop()
 
 canvas = Tk() #making the window
 canvas.title("Coint") #naming the window
 canvas.geometry("600x400") #window dimension
-canvas.geometry("+350+250") #making the window centre
+canvas.geometry("+1500+0") #making the window centre #!!!
 
-labelwelcome = Label(canvas, text="Welcome to Coint, What would you like to do?")
-labelwelcome.grid(row=0, column=0)
+def coinidentification():
+    coinidentification = Tk() #making the mainpage of the coin identification
+    coinidentification.title("Coint") #naming the window
+    coinidentification.geometry("600x400") #window dimension
+    coinidentification.geometry("+1500+0") #making the window centre #!!!
 
-buttonidentify = Button(canvas, text="Coin Identification")
-buttongame = Button(canvas, text = "Play a game")
-buttonidentify.grid(row=0, column=1)
-buttongame.grid(row=1, column=1) 
+def playgame():
+    gamemain = Tk() #making the main page of the game
+    gamemain.title("Coint") #naming the window
+    gamemain.geometry("600x400") #window dimension
+    gamemain.geometry("+1500+0") #making the window centre #!!!
 
-os.system('python ok.py')
+labelspace = Label(canvas, text="                                           ")
+labelspace.grid(row=0,column=0)
+labelwelcome = Label(canvas, text="Welcome to Coint, What would you like to do?",)
+labelwelcome.grid(row=0, column=1)
 
-fin = open("test.txt","r")
-test = fin.readline()
+buttonidentify = Button(canvas, text="Coin Identification", command=coinidentification)
+buttongame = Button(canvas, text = "Play a game", command=playgame)
+buttonidentify.grid(row=1, column=1)
+buttongame.grid(row=2, column=1) 
 
-print(test)
+#os.system('python ok.py')
+
+#fin = open("test.txt","r")
+#test = fin.readline()
+
+#print(test)
 
 
 canvas.mainloop()
