@@ -1,8 +1,9 @@
 INSTRUCTIONS TO USE
 1.  Open the terminal app (Mac)
-2.  Enter the commands (for installation of a library that is used in the code)
-    pip install opencv-python
-    python -m pip install -U -scikit-image
+2.  Enter the following 3 commands (for installation of a library that is used in the code)
+    a)  pip install opencv-python
+    b)  python -m pip install -U -scikit-image
+    c)  pip install Pillow
 3.  Enter the directory to the folder of the downloaded folder "coint"
     cd /<directory>/coint
     For example: cd /downloads/coint
