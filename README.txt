@@ -1,6 +1,6 @@
 INSTRUCTIONS TO USE
 1.  Open the terminal app (Mac)
-2.  Enter the commands (for installation of a libary that is used in the code)
+2.  Enter the commands (for installation of a library that is used in the code)
     pip install opencv-python
     python -m pip install -U -scikit-image
 3.  Enter the directory to the folder of the downloaded folder "coint"
@@ -8,13 +8,13 @@ INSTRUCTIONS TO USE
     For example: cd /downloads/coint
 4.  Enter the command
     python3 <mainapp file name.py?>
-5.  A seperate window should appear, displaying the main page of the program's GUI
+5.  A separate window should appear, displaying the main page of the program's GUI
 
 CORE FUNCTIONS
 1.  Coin Identification
     A.  Computer Identified
         Enter a image of a coin you have in hand and get the returned value/ identification of the coin.
-        You may also enter the cost price of an item that your are buying and the program will return the values to you.
+        You may also enter the cost price of an item that you are buying and the program will return the values to you.
     B.  Manual Identification
         Follow a manual step by step guide with instructions to identify the coin in hand. 
         You may pick up some information about the coins from here too!
