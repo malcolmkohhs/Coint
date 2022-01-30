@@ -12,10 +12,7 @@ import imghdr
 import time
 def nothing():
         print("No coins found, please try again")
-def somthing():
-    #something found
-    print("something")
-imginput="five_cent.png"
+imginput="cointest3.png"
 while True:
         # load image, black and white
         image = cv2.imread(imginput)
@@ -33,7 +30,6 @@ while True:
         if len(cnts)==0: #BREAK, NO OBJECT detected (e.x. plain black colour pic)
                 nothing()
                 break
-        print("object found")
         # sort the contours
         (cnts, _) = contours.sort_contours(cnts)
         colors = ((0, 0, 255), (240, 0, 159), (255, 0, 0), (255, 255, 0))
@@ -59,7 +55,6 @@ while True:
         if len(coord)==0: #BREAK, no significant object detected, break
                 nothing()
                 break
-        print("sig object found")
         x_coord,y_coord=[],[]
         for i in coordmax:
                 for c in i:
@@ -70,9 +65,9 @@ while True:
                         y_coord.append(int(y))
 
         # === CROPPING IMAGE TO FIT OBJECT/ COIN ===
-        imgo=cv2.imread(imginput)
-        cropped_image = imgo[min(y_coord)-50:max(y_coord)+50, min(x_coord)-50:max(x_coord)+50] #+/- 50 to add white space
-        cv2.imwrite("image.png", cropped_image)
+        #orgimg = cv2.imread('cointest.png')
+        cropped_image = image[min(y_coord)-50:max(y_coord)+50, min(x_coord)-50:max(x_coord)+50]
+        cv2.imwrite("cropimg.png", cropped_image)
 
         # === LOOK FOR CIRCLE --> COIN ===
         cimg=cv2.imread("cropimg.png")
@@ -83,10 +78,8 @@ while True:
         circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1, rows / 8,
                                    param1=100, param2=30,
                                    minRadius=rad, maxRadius=rad+50)
-        if circles is None:
-                nothing()
-                break
-        else:
+        if circles is not None:
+                circles = np.uint16(np.around(circles))
                 print("coin found")
                 # === COMPARE IMAGE WITH DATA BASE ===
                 x=[]
@@ -101,8 +94,6 @@ while True:
                     img_org_1=cv2.resize(img_org, (500, 500)) #resize the dimenssions
                     img_test=cv2.imread(coins[i])
                     img_test_1=cv2.resize(img_test, (500, 500)) #resize the dimenssions
-                    cv.imshow("check", img_test_1)
-                    cv.waitKey(0)
                     s = ssim(img_org_1, img_test_1,  multichannel=True)
                     x.append(s)
                 print("=== Results ===")
@@ -112,8 +103,12 @@ while True:
                     coinsrank.append(coins[x.index(i)])
                 for i in range (10):
                     print("{}. {}: {} %".format(i+1, coinsrank[9-i], format(float(y[9-i]*100),".2f")))
-                cv.imshow("imginput", img_org_1)
-                cv.waitKey(0)
 
+
+        else:
+                nothing()
                 break
+        break
+
+
 
