@@ -13,7 +13,7 @@ import time
 import random
 def nothing():
         print("No coins found, please try again")
-imginput="spoil.png"
+imginput="five_cent.png"
 while True:
         # load image, black and white
         image = cv2.imread(imginput)
@@ -66,8 +66,8 @@ while True:
                         y_coord.append(int(y))
 
         # === CROPPING IMAGE TO FIT OBJECT/ COIN ===
-        #orgimg = cv2.imread('cointest.png')
-        cropped_image = image[min(y_coord)-50:max(y_coord)+50, min(x_coord)-50:max(x_coord)+50]
+        orgimg = cv2.imread(imginput)
+        cropped_image = orgimg[min(y_coord):max(y_coord), min(x_coord):max(x_coord)]
         cv2.imwrite("cropimg.png", cropped_image)
 
         # === LOOK FOR CIRCLE --> COIN ===
@@ -105,7 +105,6 @@ while True:
                 for i in range (20):
                     img_org=cv2.imread("cropimg.png")
                     img_org_1=cv2.resize(img_org, (500, 500)) #resize the dimenssions
-                    print(coins[i])
                     img_test=cv2.imread(coins[i])
                     img_test_1=cv2.resize(img_test, (500, 500)) #resize the dimenssions
                     s = ssim(img_org_1, img_test_1,  multichannel=True)
@@ -121,7 +120,7 @@ while True:
 
         else:
                 nothing()
+                
                 break
         break
-
 
