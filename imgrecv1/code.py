@@ -10,9 +10,10 @@ from typing import no_type_check
 from skimage.metrics import structural_similarity as ssim
 import imghdr
 import time
+import random
 def nothing():
         print("No coins found, please try again")
-imginput="cointest3.png"
+imginput="spoil.png"
 while True:
         # load image, black and white
         image = cv2.imread(imginput)
@@ -84,14 +85,27 @@ while True:
                 # === COMPARE IMAGE WITH DATA BASE ===
                 x=[]
                 coinsrank=[]
-                coins = ["five_cent_old.png","fifty_cent_old.png","one_dollar_old.png","ten_cent_old.png","twenty_cent_old.png","fifty_cent.png","five_cent.png","one_dollar.png","ten_cent.png","twenty_cent.png"]
+                fivo,teno,tweo,fifo,oneo=(['five_cent_old.png','five_cent_old1.png', 'five_cent_old2.png', 'five_cent_old3.png', 'five_cent_old4.png', 'five_cent_old5.png']),(['ten_cent_old.png','ten_cent_old1.png', 'ten_cent_old2.png', 'ten_cent_old3.png', 'ten_cent_old4.png', 'ten_cent_old5.png']),(['twenty_cent_old.png','twenty_cent_old1.png', 'twenty_cent_old2.png', 'twenty_cent_old3.png', 'twenty_cent_old4.png']),(['fifty_cent_old.png','fifty_cent_old1.png', 'fifty_cent_old2.png', 'fifty_cent_old3.png', 'fifty_cent_old4.png']),(['one_dollar_old.png','one_dollar_old1.png', 'one_dollar_old2.png', 'one_dollar_old3.png', 'one_dollar_old4.png', 'one_dollar_old5.png'])
+                fiv,ten,twe,fif,one=(['five_cent.png','five_cent1.png', 'five_cent2.png', 'five_cent3.png', 'five_cent4.png']),(['ten_cent.png','ten_cent1.png', 'ten_cent2.png', 'ten_cent3.png', 'ten_cent4.png']),(['twenty_cent.png','twenty_cent1.png', 'twenty_cent2.png', 'twenty_cent3.png', 'twenty_cent4.png', 'twenty_cent5.png']),(['fifty_cent.png','fifty_cent1.png', 'fifty_cent2.png', 'fifty_cent3.png']),(['one_dollar.png','one_dollar1.png', 'one_dollar2.png', 'one_dollar3.png', 'one_dollar4.png'])
+                random.shuffle(fivo) #randomly shuffle
+                random.shuffle(teno)
+                random.shuffle(tweo)
+                random.shuffle(fifo)
+                random.shuffle(oneo)
+                random.shuffle(fiv)
+                random.shuffle(ten)
+                random.shuffle(twe)
+                random.shuffle(fif)
+                random.shuffle(one)
+                coins = [fivo[0],fivo[3],teno[1],teno[2],tweo[3],tweo[2],fifo[2],fifo[1],oneo[0],oneo[3],fiv[2],fiv[0],ten[1],ten[2],twe[1],twe[0],fif[3],fif[2],one[2],one[1]]
                 process= ["Processing...","Reading image...","Comparing image..."]
                 for i in range (3):
                     print(process[i])
                     time.sleep(1)
-                for i in range (10):
+                for i in range (20):
                     img_org=cv2.imread("cropimg.png")
                     img_org_1=cv2.resize(img_org, (500, 500)) #resize the dimenssions
+                    print(coins[i])
                     img_test=cv2.imread(coins[i])
                     img_test_1=cv2.resize(img_test, (500, 500)) #resize the dimenssions
                     s = ssim(img_org_1, img_test_1,  multichannel=True)
@@ -101,14 +115,13 @@ while True:
                 y.sort()
                 for i in y:
                     coinsrank.append(coins[x.index(i)])
-                for i in range (10):
-                    print("{}. {}: {} %".format(i+1, coinsrank[9-i], format(float(y[9-i]*100),".2f")))
+                for i in range (20):
+                    print("{}. {}: {} %".format(i+1, coinsrank[19-i], format(float(y[19-i]*100),".2f")))
 
 
         else:
                 nothing()
                 break
         break
-
 
 
