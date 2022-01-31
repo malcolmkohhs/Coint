@@ -6,7 +6,6 @@ import cv2
 import imutils
 import sys
 import cv2 as cv
-from typing import no_type_check
 from skimage.metrics import structural_similarity as ssim
 import imghdr
 import time
@@ -67,7 +66,18 @@ while True:
 
         # === CROPPING IMAGE TO FIT OBJECT/ COIN ===
         orgimg = cv2.imread(imginput)
-        cropped_image = orgimg[min(y_coord):max(y_coord), min(x_coord):max(x_coord)]
+        points=[min(y_coord),max(y_coord), min(x_coord),max(x_coord)]
+        for i in range (4):
+                if i==0 or i==2:
+                        if points[i]<0:
+                                points[i]=0
+                elif i==1:
+                        if points[1]>orgimg.shape[1]:
+                                points[1]=orgimg.shape[1]
+                elif i==3:
+                        if points[3]>orgimg.shape[0]:
+                                points[3]=orgimg.shape[0]
+        cropped_image = orgimg[points[0]:points[1], points[2]:points[3]]
         cv2.imwrite("cropimg.png", cropped_image)
 
         # === LOOK FOR CIRCLE --> COIN ===
