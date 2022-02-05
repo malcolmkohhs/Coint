@@ -5,18 +5,14 @@ from tkinter import ttk
 from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
 import tkinter
-import time
 from scipy.spatial import distance as dist
 from imutils import perspective
 from imutils import contours
 import numpy as np
 import cv2
 import imutils
-import sys
 import cv2 as cv
-from typing import no_type_check
 from skimage.metrics import structural_similarity as ssim
-import imghdr
 import random
 
 newfont = ("Open Sans", 20,"bold")
