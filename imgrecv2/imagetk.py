@@ -141,11 +141,11 @@ def nothing(): #NO COIN DETECTED #maybe need to overlay instead
     resultf.mainloop()
 
 def something(): #COIN DETECTED
-    #canvas.destroy()
+    canvas.destroy()
     global coind
     global perc
     global errpanel
-    resultp=tk.Toplevel(canvas)
+    resultp=tk.Tk()
     resultp.title("Coint: Computer Identification Result")
     resultp.geometry("600x400") #window dimension
     resultp.geometry("+550+250") #making the window centre #!!!
