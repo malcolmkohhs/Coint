@@ -22,8 +22,7 @@ CORE FUNCTIONS
         Enter a image of a coin you have in hand and get the returned value/ identification of the coin.
         You may also enter the cost price of an item that you are buying and the program will return the values to you.
     B.  Manual Identification
-        Follow a manual step by step guide with instructions to identify the coin in hand. 
-        You may pick up some information about the coins from here too!
+        Follow a manual step by step guide with instructions to identify the coin in hand. You may pick up some information about the coins from here too!
 
 2.  Game
     Test your knowledge and learn more about the coins in Singapore by counting and identifying them.
@@ -32,13 +31,12 @@ CORE FUNCTIONS
         Identify the value of the coin being shown by selecting the correct value of the choices presented.
     B.  Hard
         Calculate the value of the coins being shown and select the valuation of the choices that you think is correct.
-   
+
 3.  Learn
     Learn about all the coins in Singapore, their valuation, looks and information.
 
-ABOUT US 
-Hello! We are KaiXu, Malcolm and YiHeng of 2022 S407 and this is our Computing+ Coursework.  
-Through this project, we aim to help individuals with Down Sydrome having troubles in counting coins to be more proficient in counting them, learning more about them and to understand some basic mathematical functions.
+ABOUT US
+Hello! We are KaiXu, Malcolm and YiHeng of 2022 S407 and this is our Computing+ Coursework. Through this project, we aim to help individuals with Down Sydrome having troubles in counting coins to be more proficient in counting them, learning more about them and to understand some basic mathematical functions.
 We hope our project will create a positive impact and improve the lives of others around us! :D
 
 CREDITS/ REFERENCES

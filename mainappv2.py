@@ -278,16 +278,19 @@ def learn():
 
 def help():
     helpmain = Tk()
-    helpmain.title("Coint: help")
-    helpmain.geometry('600x600')
+    helpmain.title("Coint: Help")
+    helpmain.geometry('600x700')
     helpmain.geometry('+550+250')
-
-    f = open("README.txt", "r",)
-    data = f.read()
     
-    helplabel = Label(helpmain, text = data,wraplength=595,justify='left',)
-    helplabel.place(x=2,y=2)
-
+    f = open("README.txt", "r",)
+    data = f.readlines()
+    data1=""
+    for i in data[18:]:
+        data1+=i
+    helplabel = Label(helpmain, text = data1,wraplength=595,justify='left',font=("Open Sans",13))
+    helplabel.place(x=2,y=20)
+    lhead=Label(helpmain,text="Help",font=("Open Sans",18,"bold"))
+    lhead.place(x=280,y=2)
 #mainpage
 mainpage = Tk()
 mainpage.title("Coint")
