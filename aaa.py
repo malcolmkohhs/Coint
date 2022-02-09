@@ -9,6 +9,7 @@ import tkinter as tk
 from time import sleep
 from PIL import ImageTk, Image 
 import random
+import tkinter
 newfont = ("Open Sans", 20)
 
 #IDENTIFY FUNCTION
@@ -43,7 +44,7 @@ def coinidentification():
             coinslist=["Five Cent","Ten Cent","Twenty Cent","Fifty Cent","One Dollar"]
             coinsimglist=["five_cent","ten_cent","twenty_cent","fifty_cent","one_dollar"]
             coinsvalue=["0.05","0.10","0.20","0.50","1"]
-            coinsmain1=tk.Tk()
+            coinsmain1=tk.Toplevel()
             coinsmain1.title("Coint: Identified ({} Coin)".format(coinslist[yy]))
             coinsmain1.geometry("600x400") #window dimension
             coinsmain1.geometry("+550+250") #making the window centre #!!!
@@ -121,6 +122,11 @@ def coinidentification():
             small_gold_window.geometry('+550+250')
             small_gold_window_label = Label(small_gold_window, text="Is the coin small?", font=('Open Sans', 20,'bold'))
             small_gold_window_label.place(x=190,y=20)
+            img = Image.open("shsmall.png")
+            img = ImageTk.PhotoImage(img)
+            panel = tkinter.Label(small_gold_window, image = img)
+            panel.image=img
+            panel.place(x=120,y=110)
             small_gold_yes_btn = Button(small_gold_window, text= 'Yes', height=2, width=20, command=five_cent)
             small_gold_no_btn = Button(small_gold_window, text='No', height=2, width=20, command=one_dollar_coin1)
             w = Canvas(small_gold_window, width=500, height=10)
@@ -162,6 +168,11 @@ def coinidentification():
             silver_and_small_window.geometry('+550+250')
             silver_small_Label = Label(silver_and_small_window, text='Is the coin small?', font=('Open Sans', 20,'bold'))
             silver_small_Label.place(x=180,y=20)
+            img = Image.open("shsmall.png")
+            img = ImageTk.PhotoImage(img)
+            panel = tkinter.Label(silver_and_small_window, image = img)
+            panel.image=img
+            panel.place(x=120,y=110)
             w = Canvas(silver_and_small_window, width=500, height=10)
             w.create_line(0, 10, 500, 10, fill="black")
             w.place(x=50,y=60)
