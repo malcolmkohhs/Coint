@@ -11,7 +11,7 @@ from PIL import ImageTk, Image
 import random
 newfont = ("Open Sans", 20)
 
-#identify function
+#IDENTIFY FUNCTION
 def coinidentification():
     #automatic function
     def auto():
@@ -43,6 +43,8 @@ def coinidentification():
     automatic = Button(identifypage, text="Manual", command=manual)
     automatic.configure(height=3,width=30)
     automatic.place(x=150,y=220)
+
+#GAME FUNCTION
 correct,cont,correct1,ansimg=True,"Continue",True,""
 prevans,answer,prevans1=0,0,[]
 dollar,cents1,cents2=0,0,0
@@ -351,6 +353,7 @@ def playgame():
     hard.configure(height=6,width=30)
     hard.place(x=150,y=240)
 
+#LEARN FUNCTION
 def learn():
     print('learn')
     learnmain = Tk()
@@ -358,6 +361,7 @@ def learn():
     learnmain.geometry('600x400')
     learnmain.geometry('+550+250')
 
+#HELP FUNCTION
 def help():
     helpmain = Tk()
     helpmain.title("Coint: Help")
