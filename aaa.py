@@ -37,12 +37,13 @@ def coinidentification():
         description='1. Read the description as displayed on the screen.\n2. Check if the coin matches the description/ image.\n3. Click "Yes" if the coins matches the description.\n4. Click "No" if otherwise.'
         descl=tk.Label(main_screen, text=description, font=("Open Sans",15))
         descl.place(x=100,y=130)
+        yy=0
         def result():
-            global yy
+            global yy,coinsmain1
             coinslist=["Five Cent","Ten Cent","Twenty Cent","Fifty Cent","One Dollar"]
             coinsimglist=["five_cent","ten_cent","twenty_cent","fifty_cent","one_dollar"]
             coinsvalue=["0.05","0.10","0.20","0.50","1"]
-            coinsmain1=tk.Toplevel()
+            coinsmain1=tk.Tk()
             coinsmain1.title("Coint: Identified ({} Coin)".format(coinslist[yy]))
             coinsmain1.geometry("600x400") #window dimension
             coinsmain1.geometry("+550+250") #making the window centre #!!!
@@ -233,10 +234,10 @@ def coinidentification():
             result()
         #if they choose to quit the manual coin finder
         def quit_window():
-            print("quit")
+            main_screen.destroy()
             #quit the program
         def bthome():
-            print("go back to main page of manual identify")
+            coinsmain1.destroy()
 
         main_start_btn = Button(main_screen,text = "Let's Go!",height=2,width=20,command= gold_window)
         main_end_btn = Button(main_screen,text='Back', height=2,width=20, command=quit_window)
