@@ -12,6 +12,7 @@ import random
 newfont = ("Open Sans", 20)
 
 #IDENTIFY FUNCTION
+yy=0
 def coinidentification():
     #automatic function
     def auto():
@@ -36,7 +37,6 @@ def coinidentification():
         description='1. Read the description as displayed on the screen.\n2. Check if the coin matches the description/ image.\n3. Click "Yes" if the coins matches the description.\n4. Click "No" if otherwise.'
         descl=tk.Label(main_screen, text=description, font=("Open Sans",15))
         descl.place(x=100,y=130)
-        yy=0
         def result():
             global yy
             coinslist=["Five Cent","Ten Cent","Twenty Cent","Fifty Cent","One Dollar"]
