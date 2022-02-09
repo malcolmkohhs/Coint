@@ -42,7 +42,7 @@ def coinidentification():
             coinslist=["Five Cent","Ten Cent","Twenty Cent","Fifty Cent","One Dollar"]
             coinsimglist=["five_cent","ten_cent","twenty_cent","fifty_cent","one_dollar"]
             coinsvalue=["0.05","0.10","0.20","0.50","1"]
-            coinsmain1=tk.Tk()
+            coinsmain1=tk.Toplevel()
             coinsmain1.title("Coint: Identified ({} Coin)".format(coinslist[yy]))
             coinsmain1.geometry("600x400") #window dimension
             coinsmain1.geometry("+550+250") #making the window centre #!!!
@@ -90,7 +90,7 @@ def coinidentification():
         def gold_window():
             global new_gold
             main_screen.destroy()
-            new_gold = tk.Tk()
+            new_gold = tk.Toplevel()
             new_gold.title('Manual Coin Finder')
             new_gold.geometry('600x400')
             new_gold.geometry("+550+250")
@@ -114,7 +114,7 @@ def coinidentification():
         def small_gold():
             global small_gold_window
             new_gold.destroy()
-            small_gold_window = tk.Tk()
+            small_gold_window = tk.Toplevel()
             small_gold_window.title('Manual Coin Finder')
             small_gold_window.geometry('600x400')
             small_gold_window.geometry('+550+250')
@@ -131,7 +131,7 @@ def coinidentification():
         def silver_window():
             new_gold.destroy()
             global coin_silver_window
-            coin_silver_window = tk.Tk()
+            coin_silver_window = tk.Toplevel()
             coin_silver_window.title('Manual Coin Finder')
             coin_silver_window.geometry('600x400')
             coin_silver_window.geometry('+550+250')
@@ -155,7 +155,7 @@ def coinidentification():
         def small_silver():
             coin_silver_window.destroy()
             global silver_and_small_window
-            silver_and_small_window = tk.Tk()
+            silver_and_small_window = tk.Toplevel()
             silver_and_small_window.title('Manual Coin Finder')
             silver_and_small_window.geometry('600x400')
             silver_and_small_window.geometry('+550+250')
@@ -175,7 +175,7 @@ def coinidentification():
         def changi_airport_image():
             silver_and_small_window.destroy()
             global changi_airport_window
-            changi_airport_window = tk.Tk()
+            changi_airport_window = tk.Toplevel()
             changi_airport_window.title('Manual Coin Finder')
             changi_airport_window.geometry('600x400')
             changi_airport_window.geometry('+550+250')
