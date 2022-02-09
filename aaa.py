@@ -662,7 +662,7 @@ def learn():
     learnmain.geometry("600x400") #window dimension
     learnmain.geometry("+550+250") #making the window centre #!!!
     mainl=tk.Label(learnmain,text="Learn",font=("Open Sans",20,"bold"))
-    mainl.place(x=250,y=20)
+    mainl.place(x=270,y=20)
     mainl1=tk.Label(learnmain,text="Learn about all the coins that can be found in Singapore!",font=("Open Sans",17))
     mainl1.place(x=70,y=50)
     mainl2=tk.Label(learnmain,text="Disclaimer:\n Only covers 2nd and 3rd series of coins.",font=("Open Sans",15))
@@ -676,7 +676,7 @@ def learn():
     descl=tk.Label(learnmain, text=description, font=("Open Sans",15))
     descl.place(x=20,y=130)
     bgo=Button(learnmain,text="Let's Go!",height=2,width=20,command = lambda:coins())
-    bgo.place(x=380,y=350)
+    bgo.place(x=350,y=350)
     bback=tk.Button(learnmain,text="Back",height=2,width=20,command=lambda:back())
     bback.place(x=30,y=350)
     learnmain.mainloop()
