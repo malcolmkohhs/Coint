@@ -238,8 +238,8 @@ def coinidentification():
         def bthome():
             print("go back to main page of manual identify")
 
-        main_start_btn = Button(text = "Let's Go!",height=2,width=20,command= gold_window)
-        main_end_btn = Button(text='Back', height=2,width=20, command=quit_window)
+        main_start_btn = Button(main_screen,text = "Let's Go!",height=2,width=20,command= gold_window)
+        main_end_btn = Button(main_screen,text='Back', height=2,width=20, command=quit_window)
 
         main_end_btn.pack()
         main_end_btn.place(x=30,y=350)
