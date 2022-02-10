@@ -5,7 +5,7 @@ We hope our project will create a positive impact and improve the lives of other
 
 ## Instructions on running in terminal
 1. Open the terminal app
-2. Enter this 3 commands
+2. Enter this 3 commands  
 '''
 pip install opencv-python  
 python -m pip install -U -scikit-image  
