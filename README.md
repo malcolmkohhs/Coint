@@ -6,9 +6,9 @@ We hope our project will create a positive impact and improve the lives of other
 # Instructions on running in terminal
 1. Open the terminal app
 2. Enter this 3 commands
-   a)  pip install opencv-python
-   b)  python -m pip install -U -scikit-image
-   c)  pip install Pillow
+a)  pip install opencv-python
+b)  python -m pip install -U -scikit-image
+c)  pip install Pillow
 3. Enter the directory to the folder "coint"
 `  eg. cd downloads/coint
 4. Run the python file
