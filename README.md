@@ -13,8 +13,11 @@ pip install Pillow
 ```
 3. Open a new terminal window [⌘-n]
 4. Toggle to the folder "coint" using the cd command
-> eg. cd downloads  
-> eg. cd coint
+```
+cd folder 
+cd coint
+```
 5. Run the python file  
+```
 > python3 filename.py
- 
+```
