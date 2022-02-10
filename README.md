@@ -21,3 +21,6 @@ cd coint
 ```
 python3 cointapp.py
 ```
+
+
+©coint
