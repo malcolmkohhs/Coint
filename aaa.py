@@ -36,6 +36,10 @@ def coinidentification():
         canvas = tk.Toplevel()
         canvas.geometry("600x400")  # Size of the window
         canvas.geometry("+550+250")
+        def backkk():
+            canvas.destroy()
+        bback=tk.Button(canvas,text="Back",width=10,command=lambda:backkk())
+        bback.place(x=20,y=360)
         l1 = tk.Label(canvas,text='Enter your image here:')  
         l1.place(x=20,y=60)
         l1.configure(font=newfont1)
@@ -59,20 +63,11 @@ def coinidentification():
         l6 = tk.Label(canvas, text="Please enter numbers only. Leave blank if you have no cost value.\nDecimal is allowed for dollars ($) with no spaces.                           ",font=("Open Sans",10,"italic"))
         l6.place(x=220,y=260)
         l8 = tk.Label(canvas,text="Upload an image with a coin and identify it with a click!",font=("Open Sans",12))
-        l8.place(x=170,y=30)
-
+        l8.place(x=160,y=30)
+        w = Canvas(canvas, width=500, height=10)
+        w.create_line(0, 10, 500, 10, fill="black")
+        w.place(x=50,y=48)
         
-
-        #GO TO OTHER PAGES DIRECTORIES
-        def mani():
-            # GO TO MANUAL IDENTIFICATION PAGE ***
-            print("manuali")
-        def reent():
-            # GO TO COMP IMG RECOG PAGE ***
-            print("reent")
-        def bthome():
-            #GO TO HOME PAGE/ MAINAPP ***
-            print("go back home")
             
 
         def upload_file():
@@ -119,9 +114,8 @@ def coinidentification():
                     a=True
                 if len(inputs)>1 and clicked.get()=="Cents (¢)": #cents cannot have decimal
                     a=False
-                if str(imagefile)!="":
-                    if str(imagefile)[0]!="(": #check if there is any image input
-                        a=False
+                if str(imagefile)=="" or len(imagefile)==0:
+                    a=False
                 return a
 
         # === WINDOW WHEN NO OBJECT/ COIN DETECTED ===
@@ -141,18 +135,10 @@ def coinidentification():
             errpanel.place(x=115,y=35)
             lsub = tk.Label(resultf,text='----  RESULT  ----',font=("Open Sans",15))
             lsub.place(x=250,y=25)
-            lsub1 = tk.Label(resultf, text="Identify a coin maunally",font=("Open Sans",14))
-            lsub1.place(x=30,y=325)
-            lsub2 = tk.Label(resultf, text="Re-upload another image",font=("Open Sans",14))
-            lsub2.place(x=220,y=325)
-            lsub3 = tk.Label(resultf, text="Go back to mainpage",font=("Open Sans",14))
-            lsub3.place(x=430,y=325)
-            manb = tk.Button(resultf, text = 'Manual Identification', width=15, command=lambda:mani())
-            manb.place(x=30,y=350)
-            reb = tk.Button(resultf, text = 'Identify Another', width=15, command=lambda:reent())
-            reb.place(x=220,y=350)
-            gbackb = tk.Button(resultf, text = 'Back To Home', width=15, command=lambda:bthome())
-            gbackb.place(x=420,y=350)
+            def bthome():
+                resultf.destroy()
+            gbackb = tk.Button(resultf, text = 'Back', width=15, command=lambda:bthome())
+            gbackb.place(x=200,y=350)
             resultf.mainloop()
 
         # === WINDOW WHEN A COIN/ OBJECT IS FOUND ===
@@ -313,12 +299,10 @@ def coinidentification():
             otherpos1.place(x=30,y=329)
             otherpos1=tk.Label(resultp,text=("5. "+namecoin5[4]+": "+valcoin5[4]),font=("Open Sans",11))
             otherpos1.place(x=30,y=347)
-            manb = tk.Button(resultp, text = 'Manual Identification', width=15, command=lambda:mani())
-            manb.place(x=30,y=368)
-            reb = tk.Button(resultp, text = 'Identify Another Coin', width=15, command=lambda:reent())
-            reb.place(x=220,y=368)
-            gbackb = tk.Button(resultp, text = 'Back To Home', width=15, command=lambda:bthome())
-            gbackb.place(x=420,y=368)
+            def bthome():
+                resultp.destroy()
+            gbackb = tk.Button(resultp, text = 'Back', width=15, command=lambda:bthome())
+            gbackb.place(x=200,y=368)
             
 
         # === ALGO TO IDENTIFY IMG ====
@@ -697,27 +681,39 @@ def coinidentification():
 
         main_screen.mainloop()
     #identify page
-    print('coin identification')
+
     identifypage = Tk()
     identifypage.title("Coint: Identify")
     identifypage.geometry('600x400')
     identifypage.geometry('+550+250')
 
-
-    #identify question
-    identifyquestion = Label(identifypage,text='Welcome! \nHow would you like to identify your coin')
-    identifyquestion.place(x=120,y=50)
-    identifyquestion.configure(font=newfont)
+    mainl=tk.Label(identifypage,text="Coin Idetification",font=("Open Sans",20,"bold"))
+    mainl.place(x=200,y=20)
+    mainl1=tk.Label(identifypage,text="Find out about the coin you have in hand!",font=("Open Sans",17))
+    mainl1.place(x=140,y=50)
+    mainl3=tk.Label(identifypage,text="2 Identification Methods",font=("Open Sans",15,"bold"))
+    mainl3.place(x=210,y=100)
+    w = Canvas(identifypage, width=500, height=10)
+    w.create_line(0, 10, 500, 10, fill="black")
+    w.place(x=50,y=75)
+    description='1. Automatic Identification\nIdentify your coin by uploading an image and let the computer identify it for you.\n\n2. Manual Identification\nIdentify the coin by yourself and learn along the way!'
+    descl=tk.Label(identifypage, text=description, wraplength=200,justify="left",font=("Open Sans",15))
+    descl.place(x=50,y=150)
+    def bbback():
+        identifypage.destroy()
+    bback = Button(identifypage,text="Back",command=lambda:bbback())
+    bback.configure(height=2,width=20)
+    bback.place(x=50,y=350)
 
     #automatic button
     automatic = Button(identifypage, text="Automatic", command=auto)
-    automatic.configure(height=3,width=30)
-    automatic.place(x=150,y=150)
+    automatic.configure(height=4,width=20)
+    automatic.place(x=300,y=150)
 
     #manual button
     automatic = Button(identifypage, text="Manual", command=manual)
-    automatic.configure(height=3,width=30)
-    automatic.place(x=150,y=220)
+    automatic.configure(height=4,width=20)
+    automatic.place(x=300,y=260)
 
 #GAME FUNCTION
 correct,cont,correct1,ansimg=True,"Continue",True,""
@@ -725,292 +721,339 @@ prevans,answer,prevans1=0,0,[]
 dollar,cents1,cents2=0,0,0
 totalscore=0
 def playgame():
-    global finalanswer
+    global finalanswer, totalscore
     #beginner game mode
     def beginner():
-        global correct, prevans, answer, ansimg
-        print('beginner')     
-        gamebeginner = tk.Toplevel()
-        gamebeginner.title("Coint: Game [Beginner]")
-        gamebeginner.geometry('600x400')
-        gamebeginner.geometry('+550+250')
-        beginnerquestions = ['five_cent0.png','ten_cent0.png','twenty_cent0.png','fifty_cent0.png','one_dollar0.png','five_cent_old0.png','ten_cent_old0.png','twenty_cent_old0.png','fifty_cent_old0.png','one_dollar_old0.png'] #iamges of coins in any order
-        beginnervalues = [5,10,20,50,100,5,10,20,50,100] #value of coins in the same order as beginnerquestions
-        if correct==True:
-            r=random.choice(beginnerquestions)
-            indexr = beginnerquestions.index(r)
-            answer = beginnervalues[indexr]
-        elif correct==False:
-            answer=prevans
-            r=ansimg
-        prevans=answer
-        ansimg=r
-        imgc = Image.open(r)
-        imgc = imgc.resize((150, 150))
-        imgc = ImageTk.PhotoImage(imgc)
-        panelc = tkinter.Label(gamebeginner, image = imgc)
-        panelc.image=imgc
-        panelc.place(x=220,y=60)
-        lbegin1=Label(gamebeginner,text="Identify the coin!",font=("Open Sans",20,"bold"))
-        lbegin1.place(x=200,y=10)
-        lbegin2=Label(gamebeginner,text="Pick the option (value) that matches the image of the coin.",font=("Open Sans",15))
-        lbegin2.place(x=110,y=40)
-        def button(a):
-            global correct, answer, cont, totalscore
-            print(answer)
-            print(a)
-            if a == answer:
-                print('correct')
-                correct = True
-                cont="Continue"
-                totalscore+=3
-            else:
-                print('wrong')
-                correct = False
-                cont="Try Again"
-                totalscore+=1
-
-            def no():
-                print('no')
-                gamecontinue.destroy()
+        def beginneri():
+            beginner1.destroy()
+            global correct, prevans, answer, ansimg
+            print('beginner')     
+            gamebeginner = tk.Toplevel()
+            gamebeginner.title("Coint: Game [Beginner]")
+            gamebeginner.geometry('600x400')
+            gamebeginner.geometry('+550+250')
+            beginnerquestions = ['five_cent0.png','ten_cent0.png','twenty_cent0.png','fifty_cent0.png','one_dollar0.png','five_cent_old0.png','ten_cent_old0.png','twenty_cent_old0.png','fifty_cent_old0.png','one_dollar_old0.png'] #iamges of coins in any order
+            beginnervalues = [5,10,20,50,100,5,10,20,50,100] #value of coins in the same order as beginnerquestions
+            if correct==True:
+                r=random.choice(beginnerquestions)
+                indexr = beginnerquestions.index(r)
+                answer = beginnervalues[indexr]
+            elif correct==False:
+                answer=prevans
+                r=ansimg
+            prevans=answer
+            ansimg=r
+            imgc = Image.open(r)
+            imgc = imgc.resize((150, 150))
+            imgc = ImageTk.PhotoImage(imgc)
+            panelc = tkinter.Label(gamebeginner, image = imgc)
+            panelc.image=imgc
+            panelc.place(x=220,y=60)
+            lbegin1=Label(gamebeginner,text="Identify the coin!",font=("Open Sans",20,"bold"))
+            lbegin1.place(x=200,y=10)
+            lbegin2=Label(gamebeginner,text="Pick the option (value) that matches the image of the coin.",font=("Open Sans",15))
+            lbegin2.place(x=110,y=40)
+            def button(a):
+                global correct, answer, cont, totalscore
                 gamebeginner.destroy()
+                if a == answer:
+                    print('correct')
+                    correct = True
+                    cont="Continue"
+                    totalscore+=3
+                else:
+                    print('wrong')
+                    correct = False
+                    cont="Try Again"
+                    totalscore+=1
 
-            def yes():
-                print('yes')
-                gamecontinue.destroy()
-                gamebeginner.destroy()
-                beginner()
+                def no():
+                    print('no')
+                    gamecontinue.destroy()
+                    gamemain.destroy()
+                def yes():
+                    print('yes')
+                    gamecontinue.destroy()
+                    beginner()
 
-            gamecontinue = tk.Toplevel()
-            gamecontinue.title("Coint: Game [Beginner] Result")
-            gamecontinue.geometry('600x400')
-            gamecontinue.geometry('+550+250')
-            qwe,pic,ptt=0,["win.png","tryagain.png"],["3","1"]
-            if correct==False:
-                qwe=1
-            imgd = Image.open(pic[qwe])
-            imgd = imgd.resize((600, 110))
-            imgd = ImageTk.PhotoImage(imgd)
-            paneld = tkinter.Label(gamecontinue, image = imgd)
-            paneld.image=imgd
-            paneld.place(x=0,y=0)
-            w = Canvas(gamecontinue, width=400, height=10)
-            w.create_line(0, 10, 500, 10, fill="black")
-            w.place(x=100,y=205)
-            tscore= Label(gamecontinue,text=("Total Score: "+str(totalscore)),font=("Open Sans",20))
-            tscore.place(x=230,y=220)
-            tadd= Label(gamecontinue,text=("Added Points: "+ptt[qwe]),font=("Open Sans",20))
-            tadd.place(x=220,y=250)
-            if qwe==0:
-                tins=Label(gamecontinue,text='Challenge Passed!\nClick "Continue" for another problem or\nclick "Quit" to leave the game.',font=("Open Sans",18))
-                tins.place(x=130,y=120)
-            else:
-                tins=Label(gamecontinue,text='Keep Trying!\nClick "Try Again" to re-attempt the problem or\nclick "Quit" to leave the game.',font=("Open Sans",18))
-                tins.place(x=100,y=120)
-            #quit
-            quitbutton = Button(gamecontinue, text= 'Quit', command = no)
-            quitbutton.configure(height=2,width=11)
-            quitbutton.place(x=20,y=350)
-            #continue
-            continuebutton = Button(gamecontinue, text= cont, command = yes)
-            continuebutton.configure(height=2,width=11)
-            continuebutton.place(x=450,y=350)
-        
-        #choice 1
-        fivecentbutton = Button(gamebeginner, text= '$0.05', command = lambda: button(5))
-        fivecentbutton.configure(height=3,width=25)
-        fivecentbutton.place(x=40,y=200)
-        #choice 2
-        tencentbutton = Button(gamebeginner, text= '$0.10', command = lambda:button(10))
-        tencentbutton.configure(height=3,width=25)
-        tencentbutton.place(x=300,y=200)
-        #choice 3
-        twentycentbutton = Button(gamebeginner, text= '$0.20', command = lambda:button(20))
-        twentycentbutton.configure(height=3,width=25)
-        twentycentbutton.place(x=40,y=260)
-        #choice 4
-        fiftycentbutton = Button(gamebeginner, text= '$0.50', command = lambda:button(50))
-        fiftycentbutton.configure(height=3,width=25)
-        fiftycentbutton.place(x=300,y=260)
-        #choice 5
-        onedollarbutton = Button(gamebeginner, text= '$1.00', command = lambda:button(100))
-        onedollarbutton.configure(height=3,width=25)
-        onedollarbutton.place(x=170,y=320)
-     
+                gamecontinue = tk.Toplevel()
+                gamecontinue.title("Coint: Game [Beginner] Result")
+                gamecontinue.geometry('600x400')
+                gamecontinue.geometry('+550+250')
+                qwe,pic,ptt=0,["win.png","tryagain.png"],["3","1"]
+                if correct==False:
+                    qwe=1
+                imgd = Image.open(pic[qwe])
+                imgd = imgd.resize((600, 110))
+                imgd = ImageTk.PhotoImage(imgd)
+                paneld = tkinter.Label(gamecontinue, image = imgd)
+                paneld.image=imgd
+                paneld.place(x=0,y=0)
+                w = Canvas(gamecontinue, width=400, height=10)
+                w.create_line(0, 10, 500, 10, fill="black")
+                w.place(x=100,y=205)
+                tscore= Label(gamecontinue,text=("Total Score: "+str(totalscore)),font=("Open Sans",20))
+                tscore.place(x=230,y=220)
+                tadd= Label(gamecontinue,text=("Added Points: "+ptt[qwe]),font=("Open Sans",20))
+                tadd.place(x=220,y=250)
+                if qwe==0:
+                    tins=Label(gamecontinue,text='Challenge Passed!\nClick "Continue" for another problem or\nclick "Quit" to leave the game.',font=("Open Sans",18))
+                    tins.place(x=130,y=120)
+                else:
+                    tins=Label(gamecontinue,text='Keep Trying!\nClick "Try Again" to re-attempt the problem or\nclick "Quit" to leave the game.',font=("Open Sans",18))
+                    tins.place(x=100,y=120)
+                #quit
+                quitbutton = Button(gamecontinue, text= 'Quit', command = no)
+                quitbutton.configure(height=2,width=11)
+                quitbutton.place(x=20,y=350)
+                #continue
+                continuebutton = Button(gamecontinue, text= cont, command = yes)
+                continuebutton.configure(height=2,width=11)
+                continuebutton.place(x=450,y=350)
+            
+            #choice 1
+            fivecentbutton = Button(gamebeginner, text= '$0.05', command = lambda: button(5))
+            fivecentbutton.configure(height=3,width=25)
+            fivecentbutton.place(x=40,y=200)
+            #choice 2
+            tencentbutton = Button(gamebeginner, text= '$0.10', command = lambda:button(10))
+            tencentbutton.configure(height=3,width=25)
+            tencentbutton.place(x=300,y=200)
+            #choice 3
+            twentycentbutton = Button(gamebeginner, text= '$0.20', command = lambda:button(20))
+            twentycentbutton.configure(height=3,width=25)
+            twentycentbutton.place(x=40,y=260)
+            #choice 4
+            fiftycentbutton = Button(gamebeginner, text= '$0.50', command = lambda:button(50))
+            fiftycentbutton.configure(height=3,width=25)
+            fiftycentbutton.place(x=300,y=260)
+            #choice 5
+            onedollarbutton = Button(gamebeginner, text= '$1.00', command = lambda:button(100))
+            onedollarbutton.configure(height=3,width=25)
+            onedollarbutton.place(x=170,y=320)
+        def back():
+            beginner1.destroy()
+        beginner1 = tk.Toplevel() #making the main page of the game
+        beginner1.title("Coint: Game [Beginner]") #naming the window
+        beginner1.geometry("600x400") #window dimension
+        beginner1.geometry("+550+250") #making the window centre #!!!
+        mainl=tk.Label(beginner1,text="Beginner",font=("Open Sans",20,"bold"))
+        mainl.place(x=250,y=20)
+        mainl1=tk.Label(beginner1,text="Test your knowledge and learn!",font=("Open Sans",17))
+        mainl1.place(x=170,y=50)
+        mainl3=tk.Label(beginner1,text="Instructions to play",font=("Open Sans",15,"bold"))
+        mainl3.place(x=210,y=100)
+        w = Canvas(beginner1, width=500, height=10)
+        w.create_line(0, 10, 500, 10, fill="black")
+        w.place(x=50,y=75)
+        description='1. Look at the coin displayed on screen\n2. Choose the option (value) that best matches the value of the coin.\n3. Click the option that you think is correct.\n4. Earn 3 points when you get the question correct!'
+        descl=tk.Label(beginner1, text=description, font=("Open Sans",15))
+        descl.place(x=50,y=130)
+        bgo=Button(beginner1,text="Let's Go!",height=2,width=20,command = lambda:beginneri())
+        bgo.place(x=350,y=350)
+        bback=tk.Button(beginner1,text="Back",height=2,width=20,command=lambda:back())
+        bback.place(x=30,y=350)
+        beginner1.mainloop()
     #advanced game mode
     def advanced():
-        global correct1, prevans1
-        questionlist = []
-        questionindex = []
-        questionvalues = []
-        print('advanced')
-        gameadvanced = tk.Toplevel()
-        gameadvanced.title("Coint: Game [Advanced]")
-        gameadvanced.geometry('600x400')
-        gameadvanced.geometry('+550+250')
+        def advancedi():
+            global correct1, prevans1
+            questionlist = []
+            questionindex = []
+            questionvalues = []
+            print('advanced')
+            advance1.destroy()
+            gameadvanced = tk.Toplevel()
+            gameadvanced.title("Coint: Game [Advanced]")
+            gameadvanced.geometry('600x400')
+            gameadvanced.geometry('+550+250')
 
-        beginnerquestions = ['five_cent0.png','ten_cent0.png','twenty_cent0.png','fifty_cent0.png','one_dollar0.png','five_cent_old0.png','ten_cent_old0.png','twenty_cent_old0.png','fifty_cent_old0.png','one_dollar_old0.png'] #iamges of coins in any order #iamges of coins in any order
-        beginnervalues = [5,10,20,50,100,5,10,20,50,100] #value of coins in the same order as beginnerquestions
+            beginnerquestions = ['five_cent0.png','ten_cent0.png','twenty_cent0.png','fifty_cent0.png','one_dollar0.png','five_cent_old0.png','ten_cent_old0.png','twenty_cent_old0.png','fifty_cent_old0.png','one_dollar_old0.png'] #iamges of coins in any order #iamges of coins in any order
+            beginnervalues = [5,10,20,50,100,5,10,20,50,100] #value of coins in the same order as beginnerquestions
 
-        #obtain questions
-        if correct1==True:
-            for i in range(5):
-                question = random.choice(beginnerquestions)
-                questionlist.append(question)
-        else:
-            questionlist=prevans1
-        prevans1=questionlist
-        #obtain position of questions
-        for i in questionlist:
-            index = beginnerquestions.index(i)
-            questionindex.append(index)
-        print(questionindex)
-        x1,y1=50,100
-        for i in range (5):
-            imgc = Image.open(questionlist[i])
-            imgc = imgc.resize((100, 100))
-            imgc = ImageTk.PhotoImage(imgc)
-            panelc = tkinter.Label(gameadvanced, image = imgc)
-            panelc.image=imgc
-            panelc.place(x=x1,y=y1)
-            x1+=100
-        #obtain answers
-        ladv1=Label(gameadvanced,text="Calculate The Value!",font=("Open Sans",20,"bold"))
-        ladv1.place(x=200,y=10)
-        ladv2=Label(gameadvanced,text="Calculate the total value of the coins shown down below and enter using the drop down list.",font=("Open Sans",13))
-        ladv2.place(x=30,y=40)
-        for i in questionindex:
-            value = beginnervalues[i]
-            questionvalues.append(value)
-        print(questionvalues)
-        answer1 = sum(questionvalues)
-        print(answer1)
-        valbel=Label(gameadvanced,text="$",font=("Open Sans",20))
-        valbel.place(x=140,y=245)
-        dlabel=Label(gameadvanced,text=".",font=("Open Sans",20))
-        dlabel.place(x=260,y=245)
-        #dollar dropbar
-        optionsdollar = ['0','1','2','3','4','5','6','7','8','9']
-        clickeddollar = StringVar(gameadvanced)
-        clickeddollar.set(optionsdollar[0])
-        dropdollar = OptionMenu( gameadvanced , clickeddollar , *optionsdollar )
-        dropdollar.configure(width=5)
-
-        dropdollar.place(x=160,y=250)
-        dollar = 0
-        def change_dropdown(*args):
-            global dollar
-            value1 = clickeddollar.get()
-            dollar = value1
-            print(value1)
-        clickeddollar.trace('w', change_dropdown)
-
-        #cents 1 dropbar 
-        optionscents1 = ['0','1','2','3','4','5','6','7','8','9']
-        clickedcents1 = StringVar(gameadvanced)
-        clickedcents1.set(optionscents1[0])
-        dropcents1 = OptionMenu( gameadvanced , clickedcents1 , *optionscents1 )
-        dropcents1.configure(width=5)
-        dropcents1.place(x=280,y=250)
-        cents1 = 0
-        def change_dropdown(*args):
-            global cents1
-            value2 = clickedcents1.get()
-            cents1 = value2
-            print(value2)
-        clickedcents1.trace('w', change_dropdown)
-
-        #cents 2 dropbar
-        optionscents2 = ['0','1','2','3','4','5','6','7','8','9']
-        clickedcents2 = StringVar(gameadvanced)
-        clickedcents2.set(optionscents2[0])
-        dropcents2 = OptionMenu( gameadvanced , clickedcents2 , *optionscents2 )
-        dropcents2.configure(width=5)
-        dropcents2.place(x=380,y=250)
-        cents2 = 0
-        def change_dropdown(*args):
-            global cents2
-            value3 = clickedcents2.get()
-            cents2 = value3
-            print(value3)
-        clickedcents2.trace('w', change_dropdown)
-        
-        finalanswer = 0
-        def answer():
-            global dollar, cents1, cents2, finalanswer
-            answer = float(dollar) + float(cents1)*0.1 + float(cents2)*0.01
-            finalanswer = round(answer*100)
-
-        #submission button
-        def submit():
-            global dollar, cents1, cents2, finalanswer, correct1, totalscore
-            print('submit')
-            print(answer1)
-            answer()
-            print(finalanswer)
-            gameadvanced.destroy()
-            if finalanswer == answer1:
-                print('correct')
-                correct1=True
-                cont="Continue"
-                totalscore+=3
+            #obtain questions
+            if correct1==True:
+                for i in range(5):
+                    question = random.choice(beginnerquestions)
+                    questionlist.append(question)
             else:
-               print('wrong')
-               correct1=False
-               cont="Try Again"
-               totalscore+=1
-            dollar,cents1,cents2=0,0,0
-            def no():
-                print('no')
-                gamecontinue.destroy()
-                #gameadvanced.destroy()
-            def yes():
-                print('yes')
-                gamecontinue.destroy()
-                #gameadvanced.destroy()
-                advanced()
-
-            gamecontinue = tk.Toplevel()
-            gamecontinue.title("Coint: Game [Advanced] Result")
-            gamecontinue.geometry('600x400')
-            gamecontinue.geometry('+550+250')
-            qwe,pic,ptt=0,["win.png","tryagain.png"],["3","1"]
-            if correct1==False:
-                qwe=1
-            imgd = Image.open(pic[qwe])
-            imgd = imgd.resize((600, 110))
-            imgd = ImageTk.PhotoImage(imgd)
-            paneld = tkinter.Label(gamecontinue, image = imgd)
-            paneld.image=imgd
-            paneld.place(x=0,y=0)
-            w = Canvas(gamecontinue, width=400, height=10)
+                questionlist=prevans1
+            prevans1=questionlist
+            #obtain position of questions
+            for i in questionlist:
+                index = beginnerquestions.index(i)
+                questionindex.append(index)
+            print(questionindex)
+            x1,y1=50,100
+            for i in range (5):
+                imgc = Image.open(questionlist[i])
+                imgc = imgc.resize((100, 100))
+                imgc = ImageTk.PhotoImage(imgc)
+                panelc = tkinter.Label(gameadvanced, image = imgc)
+                panelc.image=imgc
+                panelc.place(x=x1,y=y1)
+                x1+=100
+            #obtain answers
+            ladv1=Label(gameadvanced,text="Calculate The Value!",font=("Open Sans",20,"bold"))
+            ladv1.place(x=200,y=10)
+            ladv2=Label(gameadvanced,text="Calculate the total value of the coins shown down below and enter using the drop down list.",font=("Open Sans",13))
+            ladv2.place(x=35,y=40)
+            w = Canvas(gameadvanced, width=500, height=10)
             w.create_line(0, 10, 500, 10, fill="black")
-            w.place(x=100,y=205)
-            tscore= Label(gamecontinue,text=("Total Score: "+str(totalscore)),font=("Open Sans",20))
-            tscore.place(x=230,y=220)
-            tadd= Label(gamecontinue,text=("Added Points: "+ptt[qwe]),font=("Open Sans",20))
-            tadd.place(x=220,y=250)
-            if qwe==0:
-                tins=Label(gamecontinue,text='Challenge Passed!\nClick "Continue" for another problem or\nclick "Quit" to leave the game.',font=("Open Sans",18))
-                tins.place(x=130,y=120)
-            else:
-                tins=Label(gamecontinue,text='Keep Trying!\nClick "Try Again" to re-attempt the problem or\nclick "Quit" to leave the game.',font=("Open Sans",18))
-                tins.place(x=100,y=120)
-            #quit
-            quitbutton = Button(gamecontinue, text= 'Quit', command = no)
-            quitbutton.configure(height=2,width=11)
-            quitbutton.place(x=20,y=350)
-            #continue
-            continuebutton = Button(gamecontinue, text= cont, command = yes)
-            continuebutton.configure(height=2,width=11)
-            continuebutton.place(x=450,y=350)
+            w.place(x=50,y=65)
+            for i in questionindex:
+                value = beginnervalues[i]
+                questionvalues.append(value)
+            print(questionvalues)
+            answer1 = sum(questionvalues)
+            print(answer1)
+            valbel=Label(gameadvanced,text="$",font=("Open Sans",20))
+            valbel.place(x=140,y=245)
+            dlabel=Label(gameadvanced,text=".",font=("Open Sans",20))
+            dlabel.place(x=260,y=245)
+            #dollar dropbar
+            optionsdollar = ['0','1','2','3','4','5','6','7','8','9']
+            clickeddollar = StringVar(gameadvanced)
+            clickeddollar.set(optionsdollar[0])
+            dropdollar = OptionMenu( gameadvanced , clickeddollar , *optionsdollar )
+            dropdollar.configure(width=5)
 
-        submitbutton = Button(gameadvanced,text = 'Submit', command = submit)
-        submitbutton.configure(height=1,width=10)
-        submitbutton.configure(font=newfont)
-        submitbutton.place(x=220,y=350)
+            dropdollar.place(x=160,y=250)
+            dollar = 0
+            def change_dropdown(*args):
+                global dollar
+                value1 = clickeddollar.get()
+                dollar = value1
+                print(value1)
+            clickeddollar.trace('w', change_dropdown)
 
-    print('play game')
+            #cents 1 dropbar 
+            optionscents1 = ['0','1','2','3','4','5','6','7','8','9']
+            clickedcents1 = StringVar(gameadvanced)
+            clickedcents1.set(optionscents1[0])
+            dropcents1 = OptionMenu( gameadvanced , clickedcents1 , *optionscents1 )
+            dropcents1.configure(width=5)
+            dropcents1.place(x=280,y=250)
+            cents1 = 0
+            def change_dropdown(*args):
+                global cents1
+                value2 = clickedcents1.get()
+                cents1 = value2
+                print(value2)
+            clickedcents1.trace('w', change_dropdown)
+
+            #cents 2 dropbar
+            optionscents2 = ['0','1','2','3','4','5','6','7','8','9']
+            clickedcents2 = StringVar(gameadvanced)
+            clickedcents2.set(optionscents2[0])
+            dropcents2 = OptionMenu( gameadvanced , clickedcents2 , *optionscents2 )
+            dropcents2.configure(width=5)
+            dropcents2.place(x=380,y=250)
+            cents2 = 0
+            def change_dropdown(*args):
+                global cents2
+                value3 = clickedcents2.get()
+                cents2 = value3
+                print(value3)
+            clickedcents2.trace('w', change_dropdown)
+            
+            finalanswer = 0
+            def answer():
+                global dollar, cents1, cents2, finalanswer
+                answer = float(dollar) + float(cents1)*0.1 + float(cents2)*0.01
+                finalanswer = round(answer*100)
+
+            #submission button
+            def submit():
+                global dollar, cents1, cents2, finalanswer, correct1, totalscore
+                print('submit')
+                print(answer1)
+                answer()
+                print(finalanswer)
+                gameadvanced.destroy()
+                if finalanswer == answer1:
+                    print('correct')
+                    correct1=True
+                    cont="Continue"
+                    totalscore+=3
+                else:
+                    print('wrong')
+                    correct1=False
+                    cont="Try Again"
+                    totalscore+=1
+                dollar,cents1,cents2=0,0,0
+                def no():
+                    print('no')
+                    gamecontinue.destroy()
+                    gamemain.destroy()
+                def yes():
+                    print('yes')
+                    gamecontinue.destroy()
+                    advancedi()
+
+                gamecontinue = tk.Toplevel()
+                gamecontinue.title("Coint: Game [Advanced] Result")
+                gamecontinue.geometry('600x400')
+                gamecontinue.geometry('+550+250')
+                qwe,pic,ptt=0,["win.png","tryagain.png"],["3","1"]
+                if correct1==False:
+                    qwe=1
+                imgd = Image.open(pic[qwe])
+                imgd = imgd.resize((600, 110))
+                imgd = ImageTk.PhotoImage(imgd)
+                paneld = tkinter.Label(gamecontinue, image = imgd)
+                paneld.image=imgd
+                paneld.place(x=0,y=0)
+                w = Canvas(gamecontinue, width=400, height=10)
+                w.create_line(0, 10, 500, 10, fill="black")
+                w.place(x=100,y=205)
+                tscore= Label(gamecontinue,text=("Total Score: "+str(totalscore)),font=("Open Sans",20))
+                tscore.place(x=230,y=220)
+                tadd= Label(gamecontinue,text=("Added Points: "+ptt[qwe]),font=("Open Sans",20))
+                tadd.place(x=220,y=250)
+                if qwe==0:
+                    tins=Label(gamecontinue,text='Challenge Passed!\nClick "Continue" for another problem or\nclick "Quit" to leave the game.',font=("Open Sans",18))
+                    tins.place(x=130,y=120)
+                else:
+                    tins=Label(gamecontinue,text='Keep Trying!\nClick "Try Again" to re-attempt the problem or\nclick "Quit" to leave the game.',font=("Open Sans",18))
+                    tins.place(x=100,y=120)
+                #quit
+                quitbutton = Button(gamecontinue, text= 'Quit', command = no)
+                quitbutton.configure(height=2,width=11)
+                quitbutton.place(x=20,y=350)
+                #continue
+                continuebutton = Button(gamecontinue, text= cont, command = yes)
+                continuebutton.configure(height=2,width=11)
+                continuebutton.place(x=450,y=350)
+
+            submitbutton = Button(gameadvanced,text = 'Submit', command = submit)
+            submitbutton.configure(height=1,width=10)
+            submitbutton.configure(font=newfont)
+            submitbutton.place(x=220,y=350)
+        def back():
+            advance1.destroy()
+        advance1 = tk.Toplevel() #making the main page of the game
+        advance1.title("Coint: Game [Advanced]") #naming the window
+        advance1.geometry("600x400") #window dimension
+        advance1.geometry("+550+250") #making the window centre #!!!
+        mainl=tk.Label(advance1,text="Advanced",font=("Open Sans",20,"bold"))
+        mainl.place(x=250,y=20)
+        mainl1=tk.Label(advance1,text="Level up from Beginner!",font=("Open Sans",17))
+        mainl1.place(x=200,y=50)
+        mainl3=tk.Label(advance1,text="Instructions to play",font=("Open Sans",15,"bold"))
+        mainl3.place(x=210,y=100)
+        w = Canvas(advance1, width=500, height=10)
+        w.create_line(0, 10, 500, 10, fill="black")
+        w.place(x=50,y=75)
+        description='1. Calculate the total value of the 5 coins that are displayed on the page.\n2. Enter the total value using the dropdown, in Dollars ($) format.\n3. Click "Submit" to check your answer and earn points!\n4. Earn 3 points when you get the question correct!'
+        descl=tk.Label(advance1, text=description, font=("Open Sans",15))
+        descl.place(x=40,y=130)
+        bgo=Button(advance1,text="Let's Go!",height=2,width=20,command = lambda:advancedi())
+        bgo.place(x=350,y=350)
+        bback=tk.Button(advance1,text="Back",height=2,width=20,command=lambda:back())
+        bback.place(x=30,y=350)
+        advance1.mainloop()
+        
     gamemain = tk.Toplevel()
     gamemain.title("Coint: Game")
     gamemain.geometry('600x400')
@@ -1026,16 +1069,20 @@ def playgame():
     mainl4.place(x=380,y=100)
     w = Canvas(gamemain, width=500, height=10)
     w.create_line(0, 10, 500, 10, fill="black")
+    w.place(x=50,y=75)
     description='1. Beginner\nTest your knowledge on the coins in Singapore and check if you are right!\n\n2. Advanced\nGo much higher by testing your knowledge and using some mathematical functions!'
     descl=tk.Label(gamemain, text=description, wraplength=300,justify="left",font=("Open Sans",15))
     descl.place(x=30,y=130)
-    w.place(x=50,y=75)
     img = Image.open("backrec1.png")
-    img = img.resize((230, 100))
+    img = img.resize((225, 100))
     img = ImageTk.PhotoImage(img)
     panel = tkinter.Label(gamemain, image = img)
     panel.image=img
-    panel.place(x=315,y=300)
+    panel.place(x=345,y=290)
+    mainl5=tk.Label(gamemain,text="Total Points",font=("Open Sans",15,"bold"))
+    mainl5.place(x=410,y=305)
+    mainl6=tk.Label(gamemain,text=str(totalscore)+" Points",font=("Open Sans",25))
+    mainl6.place(x=410,y=335)
     #gamemode beginner
     easy = Button(gamemain,text='Beginner',command=beginner)
     easy.configure(height=3,width=20)
@@ -1044,7 +1091,11 @@ def playgame():
     hard = Button(gamemain, text='Advanced', command=advanced)
     hard.configure(height=3,width=20)
     hard.place(x=350,y=220)
-
+    def quitout():
+        gamemain.destroy()
+    quitt = Button(gamemain, text='Back', command=quitout)
+    quitt.configure(height=2,width=20)
+    quitt.place(x=30,y=340)
 #LEARN FUNCTION
 xx,candestroy=0,True
 def learn():
