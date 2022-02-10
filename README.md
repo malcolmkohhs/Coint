@@ -9,9 +9,10 @@ We hope our project will create a positive impact and improve the lives of other
 > pip install opencv-python  
 > python -m pip install -U -scikit-image  
 > pip install Pillow  
-3. Toggle to the folder "coint" using the cd command
+3. Open a new terminal window <⌘-n>
+4. Toggle to the folder "coint" using the cd command
 > eg. cd downloads  
 > eg. cd coint
-4. Run the python file  
+5. Run the python file  
 > python3 <file name.py>
  
