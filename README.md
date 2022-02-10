@@ -12,5 +12,5 @@ pip install opencv-python
 > Enter the directory to the folder "coint"
 `  eg. cd downloads/coint
 4. Run the python file
-   eg. python3 <file name.py>
+` python3 <file name.py>
  
