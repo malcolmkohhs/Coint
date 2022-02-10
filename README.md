@@ -2,3 +2,15 @@
 Hello! We are KaiXu, Malcolm and YiHeng of 2022 S407 and this is our Computing+ Coursework.  
 Through this project, we aim to help individuals with Down Sydrome having troubles in counting coins to be more proficient in counting them, learning more about them and to understand some basic mathematical functions.
 We hope our project will create a positive impact and improve the lives of others around us!
+
+# Instructions on running in terminal
+1. Open the terminal app
+2. Enter this 3 commands
+   a)  pip install opencv-python
+   b)  python -m pip install -U -scikit-image
+   c)  pip install Pillow
+3. Enter the directory to the folder "coint"
+`  eg. cd downloads/coint
+4. Run the python file
+   eg. python3 <file name.py>
+ 
