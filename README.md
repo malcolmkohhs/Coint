@@ -19,5 +19,5 @@ cd coint
 ```
 5. Run the python file  
 ```
-python3 filename.py
+python3 cointapp.py
 ```
