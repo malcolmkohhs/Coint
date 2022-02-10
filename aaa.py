@@ -10,6 +10,17 @@ from time import sleep
 from PIL import ImageTk, Image 
 import random
 import tkinter
+from tkinter import filedialog
+from tkinter.filedialog import askopenfile
+from PIL import Image, ImageTk #to display image
+from imutils import perspective
+from imutils import contours #to check for contours/ object detect
+import numpy as np #for arrays
+import cv2 
+import imutils
+import cv2 as cv #opencv
+from skimage.metrics import structural_similarity as ssim #ssim comparison 
+
 newfont = ("Open Sans", 20)
 
 #IDENTIFY FUNCTION
@@ -22,7 +33,7 @@ def coinidentification():
         #Main page/ front page
         newfont = ("Open Sans", 20,"bold")
         newfont1 = ("Open Sans",15)
-        canvas = tk.Tk()
+        canvas = tk.Toplevel()
         canvas.geometry("600x400")  # Size of the window
         canvas.geometry("+550+250")
         l1 = tk.Label(canvas,text='Enter your image here:')  
@@ -40,7 +51,7 @@ def coinidentification():
         yourimg = Image.open("yourimg.jpeg") #load image
         yourimg = yourimg.resize((100, 100))
         yourimg = ImageTk.PhotoImage(yourimg)
-        l4 = Label(image=yourimg)
+        l4 = tk.Label(canvas, image=yourimg)
         l4.image = yourimg
         l4.place(x=220,y=100)
         l5 = tk.Label(canvas,text="Upload and identify here",font=newfont1)
@@ -116,7 +127,7 @@ def coinidentification():
         # === WINDOW WHEN NO OBJECT/ COIN DETECTED ===
         def nothing(): 
             canvas.destroy()
-            resultf=tk.Tk()
+            resultf=tk.Toplevel()
             resultf.title("Coint: Computer Identification Result")
             resultf.geometry("600x400") #window dimension
             resultf.geometry("+550+250") #making the window centre
@@ -148,7 +159,7 @@ def coinidentification():
         def something():
             canvas.destroy()
             global coind, perc
-            resultp=tk.Tk()
+            resultp=tk.Toplevel()
             resultp.title("Coint: Computer Identification Result")
             resultp.geometry("600x400") #window dimension
             resultp.geometry("+550+250") #making the window centre
@@ -432,6 +443,7 @@ def coinidentification():
         def submit():
             ltrue=tk.Label(canvas,text="                     Entries accepted!                               ",fg="blue",font=("Open Sans",15))
             ltrue.place(x=145,y=365)
+            print(imagefile)
             if submit1()==True: #input pass
                 algo(imagefile[0])
             elif submit1()==False: #input fail
