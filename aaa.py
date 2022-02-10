@@ -21,15 +21,16 @@ import imutils
 import cv2 as cv #opencv
 from skimage.metrics import structural_similarity as ssim #ssim comparison 
 
+#MAIN APP: DONE BY MALCOLM KOH
 newfont = ("Open Sans", 20)
 
-#IDENTIFY FUNCTION
+#IDENTIFY FUNCTION: DONE BY SIM YI HENG AND CHONG KAI XU
 yy=0
 imagefile="" #set string variable for the imagefile
 coind,perc=[],[]
 def coinidentification():
-    #automatic function
-    def auto():
+    #AUTOMATIC FUNCTION: DONE BY CHONG KAI XU
+    def auto(): 
         #Main page/ front page
         newfont = ("Open Sans", 20,"bold")
         newfont1 = ("Open Sans",15)
@@ -440,7 +441,7 @@ def coinidentification():
 
         canvas.mainloop()
 
-    #manual function
+    #MANUAL FUNCTION: DONE BY SIM YI HENG
     def manual():
         print('manual')
         main_screen = Tk()
@@ -680,8 +681,8 @@ def coinidentification():
         main_start_btn.place(x=380,y=350)
 
         main_screen.mainloop()
-    #identify page
-
+    
+    #IDENTIFY PAGE: DONE BY CHONG KAI XU
     identifypage = Tk()
     identifypage.title("Coint: Identify")
     identifypage.geometry('600x400')
@@ -715,7 +716,7 @@ def coinidentification():
     automatic.configure(height=4,width=20)
     automatic.place(x=300,y=260)
 
-#GAME FUNCTION
+#GAME FUNCTION: DONE BY MALCOLM KOH
 correct,cont,correct1,ansimg=True,"Continue",True,""
 prevans,answer,prevans1=0,0,[]
 dollar,cents1,cents2=0,0,0
@@ -1096,7 +1097,8 @@ def playgame():
     quitt = Button(gamemain, text='Back', command=quitout)
     quitt.configure(height=2,width=20)
     quitt.place(x=30,y=340)
-#LEARN FUNCTION
+
+#LEARN FUNCTION: DONE BY CHONG KAI XU
 xx,candestroy=0,True
 def learn():
     print('learn')
@@ -1199,7 +1201,7 @@ def learn():
     bback.place(x=30,y=350)
     learnmain.mainloop()
 
-#HELP FUNCTION
+#HELP FUNCTION: DONE BY MALCOLM KOH
 def help():
     helpmain = tk.Toplevel()
     helpmain.title("Coint: Help")
