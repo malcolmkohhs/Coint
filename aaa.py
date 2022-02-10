@@ -1011,22 +1011,39 @@ def playgame():
         submitbutton.place(x=220,y=350)
 
     print('play game')
-    gamemain = Tk()
+    gamemain = tk.Toplevel()
     gamemain.title("Coint: Game")
     gamemain.geometry('600x400')
     gamemain.geometry('+550+250')
     #gamemode question
-    gamemodequestion = Label(gamemain, text="Select your Game Mode!")
-    gamemodequestion.place(x=190,y=70)
-    gamemodequestion.configure(font=newfont)
+    gamemodequestion = Label(gamemain, text="Game",font=("Open Sans",20,"bold"))
+    gamemodequestion.place(x=260,y=20)
+    mainl1=tk.Label(gamemain,text="Test your knowledge and learn about coins along the way!",font=("Open Sans",17))
+    mainl1.place(x=70,y=50)
+    mainl3=tk.Label(gamemain,text="2 Main Levels",font=("Open Sans",17,"bold"))
+    mainl3.place(x=30,y=100)
+    mainl4=tk.Label(gamemain,text="Choose Your Level",font=("Open Sans",17,"bold"))
+    mainl4.place(x=380,y=100)
+    w = Canvas(gamemain, width=500, height=10)
+    w.create_line(0, 10, 500, 10, fill="black")
+    description='1. Beginner\nTest your knowledge on the coins in Singapore and check if you are right!\n\n2. Advanced\nGo much higher by testing your knowledge and using some mathematical functions!'
+    descl=tk.Label(gamemain, text=description, wraplength=300,justify="left",font=("Open Sans",15))
+    descl.place(x=30,y=130)
+    w.place(x=50,y=75)
+    img = Image.open("backrec1.png")
+    img = img.resize((230, 100))
+    img = ImageTk.PhotoImage(img)
+    panel = tkinter.Label(gamemain, image = img)
+    panel.image=img
+    panel.place(x=315,y=300)
     #gamemode beginner
     easy = Button(gamemain,text='Beginner',command=beginner)
-    easy.configure(height=6,width=30)
-    easy.place(x=150,y=120)
+    easy.configure(height=3,width=20)
+    easy.place(x=350,y=140)
     #gamemode advanced
     hard = Button(gamemain, text='Advanced', command=advanced)
-    hard.configure(height=6,width=30)
-    hard.place(x=150,y=240)
+    hard.configure(height=3,width=20)
+    hard.place(x=350,y=220)
 
 #LEARN FUNCTION
 xx,candestroy=0,True
@@ -1037,6 +1054,8 @@ def learn():
         if xx==0 and candestroy==True:
             learnmain.withdraw()
             candestroy=False
+        def quitl():
+            coinsmain.destroy()
         coinslist=["Five Cent","Ten Cent","Twenty Cent","Fifty Cent","One Dollar"]
         coinsimglist=["five_cent","ten_cent","twenty_cent","fifty_cent","one_dollar"]
         coinsvalue=["0.05","0.10","0.20","0.50","1"]
@@ -1103,9 +1122,8 @@ def learn():
         
         coinsmain.mainloop()
 
-    def quit():
-        #go back to learn page
-        print("quit")
+    def back():
+        learnmain.destroy()
     learnmain = Tk() #making the main page of the game
     learnmain.title("Coint: Learn") #naming the window
     learnmain.geometry("600x400") #window dimension
@@ -1122,7 +1140,7 @@ def learn():
     w.create_line(0, 10, 500, 10, fill="black")
     w.place(x=50,y=75)
     description='1. Click "Next" to view the next coin on the next page.\n2. Click "Back" to view the previous coin on the previous page.\n3. Click "Quit" to go back to this page.\n4. The pages would display the images of the coins and the description of them. \n5. These information can help you with your game, have fun!'
-    descl=tk.Label(learnmain, text=description, font=("Open Sans",15))
+    descl=tk.Label(learnmain, text=description,font=("Open Sans",15))
     descl.place(x=20,y=130)
     bgo=Button(learnmain,text="Let's Go!",height=2,width=20,command = lambda:coins())
     bgo.place(x=350,y=350)
@@ -1132,18 +1150,22 @@ def learn():
 
 #HELP FUNCTION
 def help():
-    helpmain = Tk()
+    helpmain = tk.Toplevel()
     helpmain.title("Coint: Help")
-    helpmain.geometry('600x700')
+    helpmain.geometry('600x720')
     helpmain.geometry('+550+250')
-    
+    def quith():
+        helpmain.destroy()
+    backk=Button(helpmain,text="Back",command=quith)
+    backk.configure(height=1,width=20)
+    backk.place(x=10,y=690)
     f = open("README.txt", "r",)
     data = f.readlines()
     data1=""
     for i in data[18:]:
         data1+=i
-    helplabel = Label(helpmain, text = data1,wraplength=595,justify='left',font=("Open Sans",13))
-    helplabel.place(x=2,y=20)
+    helplabel = Label(helpmain, text = data1,wraplength=580,justify='left',font=("Open Sans",13))
+    helplabel.place(x=10,y=20)
     lhead=Label(helpmain,text="Help",font=("Open Sans",18,"bold"))
     lhead.place(x=280,y=2)
 
@@ -1158,7 +1180,7 @@ img = ImageTk.PhotoImage(Image.open("cointmain.jpeg"))
 panel = tkinter.Label(mainpage, image = img)
 panel.place(x=0,y=0)
 #welcome text
-mainpagewelcome = Label(mainpage, text="Hello! \nWelcome to Coint, \nwhat would you like to do?")
+mainpagewelcome = Label(mainpage, text="Hello! \nWelcome to coint, \nwhat would you like to do?")
 mainpagewelcome.place(x=330,y=50)
 mainpagewelcome.configure(font = newfont)
 #identify button
