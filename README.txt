@@ -2,9 +2,10 @@ INSTRUCTIONS TO USE
 --> MAC USERS
     1.  Open the terminal app (Mac)
     2.  Enter the following 3 commands (for installation of a library that is used in the code)
-        a)  pip install opencv-python
-        b)  python -m pip install -U -scikit-image
-        c)  pip install Pillow
+        a)  pip3 install opencv-python  
+        b)  pip3 install scikit-image  
+        c)  pip3 install Pillow
+        d)  pip3 install imutils 
         Do ensure that you are in 'bash' mode when installing the above libraries/ packages.
     3.  Enter the directory to the folder of the downloaded folder "coint"
         cd /<directory>/coint
