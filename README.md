@@ -20,12 +20,12 @@ pip3 install Pillow
 pip3 install imutils  
 ```
 3. Open a new terminal window [⌘-n]
-4. Enter the following commands to toggle to the folder "coint" using the cd command
+4. Enter the following commands to toggle to the folder "coint-master" using the cd command
 ```
 cd downloads
 cd coint-master
 ```
-5. If you have saved the "coint" folder into another folder, please toggle into that folder instead
+5. If you have saved the "coint-master" folder into another folder, please toggle into that folder instead
 ```
 cd <foldername>
 cd coint-master
