@@ -3,7 +3,7 @@ Hello! We are KaiXu, Malcolm and YiHeng of 2022 S407 and this is our Computing+ 
 Through this project, we aim to help individuals with Down Sydrome having troubles in counting coins to be more proficient in counting them, learning more about them and to understand some basic mathematical functions.
 We hope our project will create a positive impact and improve the lives of others around us!
 
-### Instructions on how to download the folder from Github
+### Instructions on downloading the folder from Github
 1. On the page you are on right now, click the green button "Code"
 2. Upon clicking, choose the option "Download ZIP"
 3. The folder and files here would be zipped and downloaded into your computer
