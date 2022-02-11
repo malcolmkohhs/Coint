@@ -8,7 +8,7 @@ We hope our project will create a positive impact and improve the lives of other
 2. Upon clicking, choose the option "Download ZIP"
 3. The folder and files here would be zipped and downloaded into your computer
 4. Open (Unzip) the zip file named "coint-master.zip" in your Finder
-5. There should be a folder named "coint-master" that would appear in the same location in your Finder
+5. There would be a folder named "coint-master" that would appear in the same location in your Finder
 
 ### Instructions on running the code
 1. Open the Terminal app
