@@ -7,17 +7,23 @@ We hope our project will create a positive impact and improve the lives of other
 1. Open the terminal app
 2. Enter this three commands  
 ```
-pip install opencv-python  
-python -m pip install -U -scikit-image  
-pip install Pillow  
+pip3 install opencv-python  
+pip3 install scikit-image  
+pip3 install Pillow
+pip3 install imutils  
 ```
 3. Open a new terminal window [⌘-n]
-4. Toggle to the folder "coint" using the cd command
+4. Enter the following command to toggle to the folder "coint" using the cd command
 ```
 cd downloads
 cd coint
 ```
-5. Run the python file  
+If you have saved the "coint" folder into another folder, please toggle into that folder instead
+```
+cd <foldername>
+cd coint
+5. Run the following command to run python file 
 ```
 python3 cointapp.py
 ```
+6. When running the file, please do not move the windows. Thank you!
