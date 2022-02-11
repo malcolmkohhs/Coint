@@ -428,7 +428,6 @@ def coinidentification():
         def submit():
             ltrue=tk.Label(canvas,text="                     Entries accepted!                               ",fg="blue",font=("Open Sans",15))
             ltrue.place(x=145,y=365)
-            print(imagefile)
             if submit1()==True: #input pass
                 algo(imagefile[0])
             elif submit1()==False: #input fail
@@ -443,7 +442,6 @@ def coinidentification():
 
     #MANUAL FUNCTION: DONE BY SIM YI HENG
     def manual():
-        print('manual')
         main_screen = Tk()
         main_screen.geometry('600x400')
         main_screen.geometry("+550+250")
@@ -727,8 +725,7 @@ def playgame():
     def beginner():
         def beginneri():
             beginner1.destroy()
-            global correct, prevans, answer, ansimg
-            print('beginner')     
+            global correct, prevans, answer, ansimg  
             gamebeginner = tk.Toplevel()
             gamebeginner.title("Coint: Game [Beginner]")
             gamebeginner.geometry('600x400')
@@ -758,24 +755,20 @@ def playgame():
                 global correct, answer, cont, totalscore
                 gamebeginner.destroy()
                 if a == answer:
-                    print('correct')
                     correct = True
                     cont="Continue"
                     totalscore+=3
                 else:
-                    print('wrong')
                     correct = False
                     cont="Try Again"
                     totalscore+=1
 
                 def no():
-                    print('no')
                     gamecontinue.destroy()
                     gamemain.destroy()
                 def yes():
-                    print('yes')
                     gamecontinue.destroy()
-                    beginner()
+                    beginneri()
 
                 gamecontinue = tk.Toplevel()
                 gamecontinue.title("Coint: Game [Beginner] Result")
@@ -862,7 +855,6 @@ def playgame():
             questionlist = []
             questionindex = []
             questionvalues = []
-            print('advanced')
             advance1.destroy()
             gameadvanced = tk.Toplevel()
             gameadvanced.title("Coint: Game [Advanced]")
@@ -884,7 +876,6 @@ def playgame():
             for i in questionlist:
                 index = beginnerquestions.index(i)
                 questionindex.append(index)
-            print(questionindex)
             x1,y1=50,100
             for i in range (5):
                 imgc = Image.open(questionlist[i])
@@ -905,9 +896,7 @@ def playgame():
             for i in questionindex:
                 value = beginnervalues[i]
                 questionvalues.append(value)
-            print(questionvalues)
             answer1 = sum(questionvalues)
-            print(answer1)
             valbel=Label(gameadvanced,text="$",font=("Open Sans",20))
             valbel.place(x=140,y=245)
             dlabel=Label(gameadvanced,text=".",font=("Open Sans",20))
@@ -925,7 +914,6 @@ def playgame():
                 global dollar
                 value1 = clickeddollar.get()
                 dollar = value1
-                print(value1)
             clickeddollar.trace('w', change_dropdown)
 
             #cents 1 dropbar 
@@ -940,7 +928,6 @@ def playgame():
                 global cents1
                 value2 = clickedcents1.get()
                 cents1 = value2
-                print(value2)
             clickedcents1.trace('w', change_dropdown)
 
             #cents 2 dropbar
@@ -955,7 +942,6 @@ def playgame():
                 global cents2
                 value3 = clickedcents2.get()
                 cents2 = value3
-                print(value3)
             clickedcents2.trace('w', change_dropdown)
             
             finalanswer = 0
@@ -967,28 +953,21 @@ def playgame():
             #submission button
             def submit():
                 global dollar, cents1, cents2, finalanswer, correct1, totalscore
-                print('submit')
-                print(answer1)
                 answer()
-                print(finalanswer)
                 gameadvanced.destroy()
                 if finalanswer == answer1:
-                    print('correct')
                     correct1=True
                     cont="Continue"
                     totalscore+=3
                 else:
-                    print('wrong')
                     correct1=False
                     cont="Try Again"
                     totalscore+=1
                 dollar,cents1,cents2=0,0,0
                 def no():
-                    print('no')
                     gamecontinue.destroy()
                     gamemain.destroy()
                 def yes():
-                    print('yes')
                     gamecontinue.destroy()
                     advancedi()
 
@@ -1101,7 +1080,6 @@ def playgame():
 #LEARN FUNCTION: DONE BY CHONG KAI XU
 xx,candestroy=0,True
 def learn():
-    print('learn')
     def coins():
         global xx, candestroy
         if xx==0 and candestroy==True:
