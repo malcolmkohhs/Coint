@@ -1183,17 +1183,17 @@ def learn():
 def help():
     helpmain = tk.Toplevel()
     helpmain.title("Coint: Help")
-    helpmain.geometry('600x720')
+    helpmain.geometry('600x800')
     helpmain.geometry('+550+250')
     def quith():
         helpmain.destroy()
     backk=Button(helpmain,text="Back",command=quith)
     backk.configure(height=1,width=20)
-    backk.place(x=10,y=690)
+    backk.place(x=10,y=765)
     f = open("README.txt", "r",)
     data = f.readlines()
     data1=""
-    for i in data[18:]:
+    for i in data[16:]:
         data1+=i
     helplabel = Label(helpmain, text = data1,wraplength=580,justify='left',font=("Open Sans",13))
     helplabel.place(x=10,y=20)
