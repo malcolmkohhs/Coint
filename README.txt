@@ -8,8 +8,8 @@ INSTRUCTIONS TO USE
         d)  pip3 install imutils 
         Do ensure that you are in 'bash' mode when installing the above libraries/ packages.
     3.  Enter the directory to the folder of the downloaded folder "coint"
-        cd /<directory>/coint
-        For example: cd /downloads/coint
+        cd /<directory>/coint-master
+        For example: cd /downloads/coint-master
     4.  Enter the command
         python3 cointapp.py
     5.  A separate window should appear, displaying the main page of the program's GUI
