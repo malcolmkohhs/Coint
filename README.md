@@ -18,12 +18,14 @@ pip3 install imutils
 cd downloads
 cd coint
 ```
-If you have saved the "coint" folder into another folder, please toggle into that folder instead
+5. If you have saved the "coint" folder into another folder, please toggle into that folder instead
 ```
 cd <foldername>
 cd coint
-5. Run the following command to run python file 
+```
+6. Run the following command to run python file 
 ```
 python3 cointapp.py
 ```
-6. When running the file, please do not move the windows. Thank you!
+7. When running the python file, please do not move the windows.
+8. Should you need any help in the functions, please go to "Help" on the mainpage for the overview of the functions. Thank you and have fun! :)
